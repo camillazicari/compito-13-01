@@ -36,6 +36,12 @@ class CommentArea extends Component {
     }
   };
 
+  componentDidUpdate = (prevProps) => {
+    if (prevProps.asin !== this.props.asin) {
+      this.componentDidMount();
+    }
+  };
+
   render() {
     return (
       <div className='text-center'>

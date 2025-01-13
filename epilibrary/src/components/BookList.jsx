@@ -1,6 +1,7 @@
 import { Component } from "react";
 import SingleBook from "./SingleBook";
 import { Col, Form, Row } from "react-bootstrap";
+import CommentArea from "./CommentArea";
 
 class BookList extends Component {
   state = {
@@ -32,20 +33,29 @@ class BookList extends Component {
           </Col>
         </Row>
         <Row className='g-2 mt-3'>
-          {this.props.books
-            .filter((b) =>
-              b.title.toLowerCase().includes(this.state.searchQuery)
-            )
-            .map((b) => (
-              <Col xs={6} key={b.asin}>
-                <SingleBook
-                  book={b}
-                  asin={this.state.asin === b.asin}
-                  changeState={this.changeState}
-                />
-              </Col>
-            ))}
-          <Col xs={6}></Col>
+          <Col xs={6}>
+            <h5>Sezione Libri:</h5>
+            <Row>
+              {this.props.books
+                .filter((b) =>
+                  b.title.toLowerCase().includes(this.state.searchQuery)
+                )
+                .map((b) => (
+                  <Col xs={6} key={b.asin}>
+                    <SingleBook
+                      book={b}
+                      asin={this.state.asin === b.asin}
+                      changeState={this.changeState}
+                    />
+                  </Col>
+                ))}
+            </Row>
+          </Col>
+
+          <Col xs={6}>
+            <h5>Sezione Commenti:</h5>
+            {this.state.asin && <CommentArea asin={this.state.asin} />}
+          </Col>
         </Row>
       </>
     );
