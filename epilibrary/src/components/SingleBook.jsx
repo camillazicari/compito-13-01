@@ -1,30 +1,24 @@
-import { Component } from "react";
 import { Card } from "react-bootstrap";
 
-class SingleBook extends Component {
+const SingleBook = (props) => {
   // state = {
   //   selected: false,
   // }
-
-  render() {
-    return (
-      <>
-        <Card
-          onClick={() => this.props.changeState(this.props.book.asin)}
-          style={{
-            border: this.props.asin ? "3px solid red" : "none",
-          }}
-        >
-          <Card.Img variant='top' src={this.props.book.img} />
-          <Card.Body>
-            <Card.Title style={{ color: "black" }}>
-              {this.props.book.title}
-            </Card.Title>
-          </Card.Body>
-        </Card>
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <Card
+        onClick={() => props.changeState(props.book.asin)}
+        style={{
+          border: props.asin ? "3px solid red" : "none",
+        }}
+      >
+        <Card.Img variant='top' src={props.book.img} />
+        <Card.Body>
+          <Card.Title style={{ color: "black" }}>{props.book.title}</Card.Title>
+        </Card.Body>
+      </Card>
+    </>
+  );
+};
 
 export default SingleBook;
