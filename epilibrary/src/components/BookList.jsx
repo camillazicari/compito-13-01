@@ -23,12 +23,12 @@ const BookList = (props) => {
 
   return (
     <>
-      <Row className='justify-content-center mt-5'>
-        <Col xs={12} md={4} className='text-center'>
+      <Row className="justify-content-center mt-5">
+        <Col xs={12} md={4} className="text-center">
           <Form.Group>
             <Form.Control
-              type='search'
-              placeholder='Cerca un libro'
+              type="search"
+              placeholder="Cerca un libro"
               value={searchQuery}
               onChange={(e) =>
                 // this.setState({ searchQuery: e.target.value })
@@ -38,14 +38,14 @@ const BookList = (props) => {
           </Form.Group>
         </Col>
       </Row>
-      <Row className='g-2 mt-3'>
+      <Row className="g-2 mt-3">
         <Col xs={6}>
           <h5>Sezione Libri:</h5>
           <Row>
             {props.books
               .filter((b) => b.title.toLowerCase().includes(searchQuery))
               .map((b) => (
-                <Col xs={6} key={b.asin}>
+                <Col xs={6} key={b.asin} data-testid="book-cards">
                   <SingleBook
                     book={b}
                     asin={asin === b.asin}
